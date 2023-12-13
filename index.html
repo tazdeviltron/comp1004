@@ -33,8 +33,8 @@
             text += "</table>"
             document.getElementById("demo").innerHTML = text;
         }
-        xmlhttp.open("POST", "");
-        xmlhttp.setRequestHeader("Content-type", "");
+        xmlhttp.open("POST", "demo.json");
+        xmlhttp.setRequestHeader("Content-type", "demo.json");
         xmlhttp.send("x=" + dbParam);
     </script>
 </body>
