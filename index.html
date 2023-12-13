@@ -18,10 +18,19 @@
     Design of the page with register input and output of Soreboard-->
 <body>
     <h2>Register for game!</h2>
-    <button onclick="myFunction()">Register</button>
+    <form action="/action_page.php">
+        <label for="user">Username:</label>
+        <input type="text" id="user" name="user"><br><br>
+        <label for="pass">Password:</label>
+        <input type="text" id="pass" name="pass"><br><br>
+        <label for="email">Email address:</label>
+        <input type="text" id="email" name="email"><br><br>
+        <input type="submit" value="Submit">
+    </form>
     <h2> Scoreboard!</h2>
     <p id="demo"></p>
-    <script> //change this to my data, make table for scoreboard
+    <script>
+    //change this to my data, make table for scoreboard
         const dbParam = JSON.stringify({ table: "user", limit: 10 });
         const xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function () {
@@ -43,6 +52,6 @@
 <script>
     //script to load input data and load another button
     function myFunction() {
-     ;
+       
     }
 </script>
