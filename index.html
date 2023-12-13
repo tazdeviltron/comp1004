@@ -18,40 +18,29 @@
     Design of the page with register input and output of Soreboard-->
 <body>
     <h2>Register for game!</h2>
-    <form action="/action_page.php">
+    <form onsubmit="myFunction(); return false">
         <label for="user">Username:</label>
-        <input type="text" id="user" name="user"><br><br>
+        <input type="text" id="user" name="user"/><br><br>
         <label for="pass">Password:</label>
-        <input type="text" id="pass" name="pass"><br><br>
+        <input type="password" id="pass" name="pass"><br><br>
         <label for="email">Email address:</label>
-        <input type="text" id="email" name="email"><br><br>
-        <input type="submit" value="Submit"onclick="myFunction()">
+        <input type="email" id="email" name="email"/><br><br>
+        <input type="submit" value="Submit" />
     </form>
     <h2> Scoreboard!</h2>
     <p id="demo"></p>
-    <script>
-    //change this to my data, make table for scoreboard
-        const dbParam = JSON.stringify({ table: "user", limit: 10 });
-        const xmlhttp = new XMLHttpRequest();
-        xmlhttp.onload = function () {
-            const myObj = JSON.parse(this.responseText);
-            let text = "<table border='4'>"
-            for (let x in myObj) {
-                text += "<tr><td>" + myObj[x].name + "</td></tr>";
-            }
-            text += "</table>"
-            document.getElementById("demo").innerHTML = text;
-        }
-        xmlhttp.open("POST", "demo.json");
-        xmlhttp.setRequestHeader("Content-type", "demo.json");
-        xmlhttp.send("x=" + dbParam);
-    </script>
+
 </body>
 </html>
 
 <script>
     //script to load input data and load another button
+    registration_data = {};
+
     function myFunction() {
-       
+        registration_data.username = document.getElementById("user").value;
+        registration_data.password = document.getElementById("pass").value;
+        registration_data.email = document.getElementById("email").value;
+
     }
 </script>
