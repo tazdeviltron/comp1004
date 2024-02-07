@@ -70,7 +70,13 @@
 localStorage.setItem("username",registration_data.username);
 localStorage.setItem("password",registration_data.password);
 localStorage.setItem("email",registration_data.email);
-localStorage.setItem("database", JSON.stringify(registration_data));
+localStorage.setItem("oneuser", JSON.stringify(registration_data));
+
+var db = JSON.parse(localStorage.getItem("oneuser"));
+localStorage.setItem("database", JSON.stringify([db, db]));
+
+
+
 //strong password
     }
     function btnUpdateUsername(){
