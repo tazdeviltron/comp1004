@@ -17,6 +17,11 @@
     Version:V1 13/12/23
     Design of the page with register input and output of Soreboard-->
 <body>
+<label for="user1">Username:</label>
+	<input type="text" id="user1" name="user1" />
+	<label for="pass1">Password:</label>
+	<input type="password" id="pass1" name="pass1">
+    <input type="button" id="login" value="Login" onclick="btnLogin()" />
     <center>
         <h2> Scoreboard!</h2>
         <p id="demo"></p>
@@ -31,30 +36,8 @@
         <input type="email" id="email" name="email" /><br><br>
         <input type="submit" value="Submit" />
     </form>
-    <h2>Login</h2>
-    <!--I need to have an interaction on what they want to update-->
-    <input type="button" id="username" value="Update Username" onclick="btnUpdateUsername()" />
-    <input type="button" id="password" value="Update Password" onclick="btnUpdatePassword()" />
-    <input type="button" id="newemail" value="Update Email" onclick="btnUpdateEmail()" />
-    <!--I need to make this div class hidden-->
-    <div class="form-popup" id="username">
-        <form action="/Users/natas/source/repos/comp1004/comp1004/index.html" class="form-container">
-            <button type="submit" class="btn">Login</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-    <div class="form-popup" id="password">
-        <form action="/Users/natas/source/repos/comp1004/comp1004/index.html" class="form-container">
-            <button type="submit" class="btn">Login</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-    <div class="form-popup" id="newemail">
-        <form action="/Users/natas/source/repos/comp1004/comp1004/index.html" class="form-container">
-            <button type="submit" class="btn">Login</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        </form>
-    </div>
+   <!--I need to make this div class hidden-->
+    
 </body>
 </html>
 
@@ -73,7 +56,7 @@
         registration_data.email = document.getElementById("email").value;
 		flag = false;
 //check if no other username is the same
-    for(let i=0 ; i < db.length; i++){ //boolang flag
+    for(let i=0 ; i < db.length; i++){ // flag
  if (db[i].username == registration_data.username){
             flag = true;
                          break;
@@ -90,25 +73,17 @@
 else {
     //
 	var usernameText = document.getElementById("user");
-	usernameText.value = "name has been taken";
+	var passwordText = document.getElementById("pass");
+	var emailText = document.getElementById("email");
+	usernameText.value = "";
+	passwordText.value = "";
+	emailText.value = "";
+	alert("username has been taken");
 }
-//could add check to see if strong password
-    }
-    function btnUpdateUsername(){
-        document.getElementById("username").style.display = "block";
-    }
-    function closeForm() {
-        document.getElementById("username").style.display = "none";
-        document.getElementById("password").style.display = "none";
-        document.getElementById("newemail").style.display = "none";
-    }
 
-    function btnUpdatePassword() {
-        document.getElementById("password").style.display = "block";
     }
-    function btnUpdateEmail() {
-        document.getElementById("newemail").style.display = "block";
-    }
+	
+
 	async function digestMessage(message) {
   const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
   const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message
