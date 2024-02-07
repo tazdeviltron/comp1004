@@ -62,23 +62,24 @@
     //script to load input data
     registration_data = {};
 
-    function myFunction() {
+    async function myFunction() {
+	var db = JSON.parse(localStorage.getItem("database"));
+	if (db === null) {
+	db = [];
+	}
+
         registration_data.username = document.getElementById("user").value;
-        registration_data.password = document.getElementById("pass").value;
+        registration_data.password = await digestMessage(document.getElementById("pass").value);
         registration_data.email = document.getElementById("email").value;
-//store the data and check if no other username is the same
-//"Look up table"?
-localStorage.setItem("username",registration_data.username);
-localStorage.setItem("password",registration_data.password);
-localStorage.setItem("email",registration_data.email);
-localStorage.setItem("oneuser", JSON.stringify(registration_data));
+//check if no other username is the same
 
-var db = JSON.parse(localStorage.getItem("oneuser"));
-localStorage.setItem("database", JSON.stringify([db, db]));
+//else
+db.push(registration_data); //pushes data
+localStorage.setItem("database", JSON.stringify(db)); //local storge
 
 
 
-//strong password
+//could add check to see if strong password
     }
     function btnUpdateUsername(){
         document.getElementById("username").style.display = "block";
@@ -95,4 +96,13 @@ localStorage.setItem("database", JSON.stringify([db, db]));
     function btnUpdateEmail() {
         document.getElementById("newemail").style.display = "block";
     }
+	async function digestMessage(message) {
+  const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8); // hash the message
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // convert buffer to byte array
+  const hashHex = hashArray
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join(""); // convert bytes to hex string
+  return hashHex;
+}
 </script>
