@@ -71,14 +71,27 @@
         registration_data.username = document.getElementById("user").value;
         registration_data.password = await digestMessage(document.getElementById("pass").value);
         registration_data.email = document.getElementById("email").value;
+		flag = false;
 //check if no other username is the same
+    for(let i=0 ; i < db.length; i++){ //boolang flag
+ if (db[i].username == registration_data.username){
+            flag = true;
+                         break;
+ //error
+ }
+	
+}
+        if (flag == false){
+         db.push(registration_data); //pushes data
+        localStorage.setItem("database", JSON.stringify(db));
+ //local storge
+}
 
-//else
-db.push(registration_data); //pushes data
-localStorage.setItem("database", JSON.stringify(db)); //local storge
-
-
-
+else {
+    //
+	var usernameText = document.getElementById("user");
+	usernameText.value = "name has been taken";
+}
 //could add check to see if strong password
     }
     function btnUpdateUsername(){
