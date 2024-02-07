@@ -66,7 +66,9 @@
         registration_data.username = document.getElementById("user").value;
         registration_data.password = document.getElementById("pass").value;
         registration_data.email = document.getElementById("email").value;
-
+//store the data and check if no other username is the same
+localStorage.setItem("username",registration_data.username);
+//strong password
     }
     function btnUpdateUsername(){
         document.getElementById("username").style.display = "block";
@@ -75,7 +77,6 @@
         document.getElementById("username").style.display = "none";
         document.getElementById("password").style.display = "none";
         document.getElementById("newemail").style.display = "none";
-    }
     }
 
     function btnUpdatePassword() {
