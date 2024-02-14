@@ -10,6 +10,14 @@
             background-size: cover;
             color: white;
         }
+		#reg{ 
+		display:none;
+		
+		}
+		#login1{
+		display:none;
+		}
+		
     </style>
 </head>
 <!--Autor: Natasha
@@ -17,16 +25,38 @@
     Version:V1 13/12/23
     Design of the page with register input and output of Soreboard-->
 <body>
-<label for="user1">Username:</label>
+<input type="button" id="showreg" value ="Want to register?" onclick="btnshowreg()"/>
+<input type="button" id="showlogin" value="Want to login?" onclick="btnshowlogin()"/>
+<div id="login1"><label for="user1">Username:</label>
 	<input type="text" id="user1" name="user1" />
 	<label for="pass1">Password:</label>
 	<input type="password" id="pass1" name="pass1">
-    <input type="button" id="login" value="Login" onclick="btnLogin()" />
+    <input type="button" id="login" value="Login" onclick="btnLogin()" /></div>
     <center>
         <h2> Scoreboard!</h2>
+		<table>
+  <tr>
+    <th>User</th>
+    <th>Time(min)</th>
+    <th>Level</th>
+	<th>Score</th>
+  </tr>
+  <tr>
+    <td>AlFu</td>
+    <td>10:00</td>
+    <td>7</td>
+	<td>1001</td>
+  </tr>
+  <tr>
+    <td>Nat</td>
+    <td>9:55</td>
+    <td>7</td>
+	<td>999</td>
+  </tr>
+</table>
         <p id="demo"></p>
     </center>
-    <h2>Register for game!</h2>
+    <div id="reg"> <h2>Register for game!</h2>
     <form onsubmit="myFunction(); return false">
         <label for="user">Username:</label>
         <input type="text" id="user" name="user" /><br><br>
@@ -35,7 +65,7 @@
         <label for="email">Email address:</label>
         <input type="email" id="email" name="email" /><br><br>
         <input type="submit" value="Submit" />
-    </form>
+    </form></div>
    <!--I need to make this div class hidden-->
     
 </body>
@@ -44,7 +74,6 @@
 <script>
     //script to load input data
     registration_data = {};
-
     async function myFunction() {
 	var db = JSON.parse(localStorage.getItem("database"));
 	if (db === null) {
@@ -92,5 +121,23 @@ else {
     .map((b) => b.toString(16).padStart(2, "0"))
     .join(""); // convert bytes to hex string
   return hashHex;
+}
+async function btnshowreg(){
+var x = document.getElementById("reg");
+if(x.style.display === "none"){
+x.style.display ="inline-block";
+}
+else{
+x.style.display ="none";
+}
+}
+async function btnshowlogin(){
+var y = document.getElementById("login1");
+if(y.style.display ==="none"){
+y.style.display="inline-block";
+}
+else{
+y.style.display="none";
+}
 }
 </script>
