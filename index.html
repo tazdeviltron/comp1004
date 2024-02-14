@@ -10,13 +10,7 @@
             background-size: cover;
             color: white;
         }
-		#reg{ 
-		display:none;
-		
-		}
-		#login1{
-		display:none;
-		}
+
 		
     </style>
 </head>
@@ -27,7 +21,7 @@
 <body>
 <input type="button" id="showreg" value ="Want to register?" onclick="btnshowreg()"/>
 <input type="button" id="showlogin" value="Want to login?" onclick="btnshowlogin()"/>
-<div id="login1"><label for="user1">Username:</label>
+<div id="login1" style="display:none"><label for="user1">Username:</label>
 	<input type="text" id="user1" name="user1" />
 	<label for="pass1">Password:</label>
 	<input type="password" id="pass1" name="pass1">
@@ -53,10 +47,16 @@
     <td>7</td>
 	<td>999</td>
   </tr>
+  <tr>
+    <td>Lane</td>
+	<td>9:50</td>
+	<td> 7 </td>
+	<td> 990 </td>
+  </td>
 </table>
         <p id="demo"></p>
     </center>
-    <div id="reg"> <h2>Register for game!</h2>
+    <div id="reg" style="display:none"> <h2>Register for game!</h2>
     <form onsubmit="myFunction(); return false">
         <label for="user">Username:</label>
         <input type="text" id="user" name="user" /><br><br>
@@ -121,6 +121,10 @@ else {
     .map((b) => b.toString(16).padStart(2, "0"))
     .join(""); // convert bytes to hex string
   return hashHex;
+}
+async function btnLogin(){
+//look though the reg and find email and pasword match
+
 }
 async function btnshowreg(){
 var x = document.getElementById("reg");
