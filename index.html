@@ -67,7 +67,32 @@
         <input type="submit" value="Submit" />
     </form></div>
    <!--I need to make this div class hidden-->
-    
+    <div id="Edituser" style="display.none"> <h2> Edit username </h2>
+	<form onsubmit="EditUsername(); return false">
+	     <label for="currentuser">Current Username:</label>
+		 <input type="text" id="currentuser" name="currentuser" />
+		 <label for="newuser">New Username:</label>
+		 <input type="text" id="newuser" name="newuser" />
+		 <input type="submit" value="usersubmit" />
+	</form></div>
+	
+	<div id="Editpassword" style="display.none"> <h2> Edit password </h2>
+	<form onsubmit="EditPassword(); return false">
+	     <label for="currentpass">Current Password:</label>
+		 <input type="text" id="currentpass" name="currentpass" />
+		 <label for="newpass">New Password:</label>
+		 <input type="text" id="newpass" name="newpass" />
+		 <input type="submit" value="passsubmit" />
+	</form></div>
+	
+	<div id="EditEmail" style="display.none"> <h2> Edit Email </h2>
+	<form onsubmit="EditEmail(); return false">
+	     <label for="currentEmail">Current Email:</label>
+		 <input type="text" id="currentEmail" name="currentEmail" />
+		 <label for="newEmail">New Email:</label>
+		 <input type="text" id="newEmail" name="newEmail" />
+		 <input type="submit" value="Emailsubmit" />
+	</form></div>
 </body>
 </html>
 
@@ -123,8 +148,23 @@ else {
   return hashHex;
 }
 async function btnLogin(){
-//look though the reg and find email and pasword match
-
+//look though the reg and find username and pasword match
+var db = JSON.parse(localStorage.getItem("database"));
+var log = document.getElementById("login1");
+var ee = document.getElementById("EditEmail");
+var ep = document.getElementById("Editpassword");
+var eu = document.getElementById("Edituser");
+ for(let i=0 ; i < db.length; i++){ // flag
+ if (db[i].username == user1.value && db[i].password = pass1.value){
+ log.style.display="none";
+ ee.style.display="inline-block";
+ ep.style.display="inline-block";
+ eu.style.display="inline-block";
+ }
+ else{
+ alert("username or password is wrong or doesn't exist");
+ }
+ }
 }
 async function btnshowreg(){
 var x = document.getElementById("reg");
