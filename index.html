@@ -195,13 +195,28 @@ var hashedPasswordInput = await digestMessage(passwordInput);
      alert("username or password is wrong or doesn't exist");
 }
 async function EditUsername(){
-
+    var db = JSON.parse(localStorage.getItem("database"));
+    for (let i = 0; i < db.length; i++) {
+        if (db[i].username == newuser.value) {
+            alert("name already take try again")
+        }
+        if (db[i].username == currentuser.value) {
+            registration_data.username = document.getElementById("newuser").value;
+            db.push(registratio_data);
+            localStorage.setItem("database", JSON.stringify(db));
+        }
+    }
 }
 async function EditPassword(){
+    var db = JSON.parse(localStorage.getItem("database"));
+    for (let i = 0; i < db.length; i++) {
 
+    }
 }
 async function EditEmail(){
-
+    var db = JSON.parse(localStorage.getItem("database"));
+    for (let i = 0; i < db.length; i++) {
+    }
 }
 async function btnLogout(){
     var b = document.getElementById("dbutton");
