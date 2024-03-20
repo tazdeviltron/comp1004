@@ -227,6 +227,17 @@ async function EditPassword(){
 async function EditEmail(){
     var db = JSON.parse(localStorage.getItem("database"));
     for (let i = 0; i < db.length; i++) {
+        if (db[i].email == newEmail.value) {
+            alert("Email already taken try again");
+        }
+        if (db[i].email == currentEmail.value) {
+            db[i].email = document.getElementById("newEmail").value;
+            localStorage.setItem("database", JSON.stringify(db));
+            newEmail.value = "";
+            currentEmail.value = "";
+            alert("Email has been updated");
+            break;
+        }
     }
 }
 async function btnLogout(){
