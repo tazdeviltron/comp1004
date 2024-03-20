@@ -203,13 +203,25 @@ async function EditUsername(){
         if (db[i].username == currentuser.value) {
             db[i].username = document.getElementById("newuser").value;
             localStorage.setItem("database", JSON.stringify(db));
+            newuser.value = "";
+            currentuser.value = "";
+            alert("Username has been updated");
+            break;
         }
     }
 }
 async function EditPassword(){
     var db = JSON.parse(localStorage.getItem("database"));
+    var passwordInput = document.getElementById("currentpass").value;
+    var hashedPasswordInput = await digestMessage(passwordInput);
     for (let i = 0; i < db.length; i++) {
-
+        if (db[i].password == hashedPasswordInput) {
+            db[i].password = await digestMessage(document.getElementById("newpass").value);
+            localStorage.setItem("database", JSON.stringify(db));
+            currentpass.value = "";
+            newpass.value = "";
+            alert("Password has been updated");
+        }
     }
 }
 async function EditEmail(){
