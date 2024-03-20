@@ -20,8 +20,9 @@
     Design of the page with register input and output of Soreboard-->
 <body>
     <div id="dbutton" style="display:in-line">
-    <input type="button" id="showreg" value="Want to register?" onclick="btnshowreg()" />
-    <input type="button" id="showlogin" value="Want to login?" onclick="btnshowlogin()" /></div>
+        <input type="button" id="showreg" value="Want to register?" onclick="btnshowreg()" />
+        <input type="button" id="showlogin" value="Want to login?" onclick="btnshowlogin()" />
+    </div>
     <div id="login1" style="display:none">
         <label for="user1">Username:</label>
         <input type="text" id="user1" name="user1" />
@@ -34,37 +35,39 @@
         <h3>Video game!</h3>
     </div>
     <center>
-        <div id="scoreboard" style="display:in-line"><h2> Scoreboard!</h2>
-        <table>
-            <tr>
-                <th>User</th>
-                <th>Time(min)</th>
-                <th>Level</th>
-                <th>Score</th>
-            </tr>
-            <tr>
-                <td>AlFu</td>
-                <td>10:00</td>
-                <td>7</td>
-                <td>1001</td>
-            </tr>
-            <tr>
-                <td>Nat</td>
-                <td>9:55</td>
-                <td>7</td>
-                <td>999</td>
-            </tr>
-            <tr>
-                <td>Lane</td>
-                <td>9:50</td>
-                <td> 7 </td>
-                <td> 990 </td>
-            </tr>
-        </table>
-        <p id="demo"></p>
+        <div id="scoreboard" style="display:in-line">
+            <h2> Scoreboard!</h2>
+            <table>
+                <tr>
+                    <th>User</th>
+                    <th>Time(min)</th>
+                    <th>Level</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td>AlFu</td>
+                    <td>10:00</td>
+                    <td>7</td>
+                    <td>1001</td>
+                </tr>
+                <tr>
+                    <td>Nat</td>
+                    <td>9:55</td>
+                    <td>7</td>
+                    <td>999</td>
+                </tr>
+                <tr>
+                    <td>Lane</td>
+                    <td>9:50</td>
+                    <td> 7 </td>
+                    <td> 990 </td>
+                </tr>
+            </table>
+            <p id="demo"></p>
         </div>
     </center>
     <div id="game" style="display:none"><canvas> </canvas> </div>
+    <script type="text/javascript" src="index.js"></script>
     <div id="reg" style="display:none">
         <h2>Register for game!</h2>
         <form onsubmit="myFunction(); return false">
@@ -116,7 +119,6 @@
 <script>
     //script to load input data
     registration_data = {};
-    src = "index.js";
     async function myFunction() {
         var db = JSON.parse(localStorage.getItem("database"));
         var usernameText = document.getElementById("user");
