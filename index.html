@@ -123,12 +123,12 @@
     c.fillStyle = "white";
     c.fillRect(0, 0, canvas.width, canvas.height);
     const image = new Image();
-    image.src = "zombiemap.png";
+    image.src = "./zombiemap.png";
     const playerimage = new Image();
-    playerimage.src = "playerdown.png";
+    playerimage.src = "./Playerdown.png";
     image.onload = () => {
         c.drawImage(image, -850, -200)
-        c.drawImage(playerimage, canvas.width / 2, canvas.height/2)
+        c.drawImage(playerimage, canvas.width/2, canvas.height/2)
     }
   
 
