@@ -116,22 +116,7 @@
 <script>
     //script to load input data
     registration_data = {};
-    const canvas = document.querySelector("canvas");
-    const c = canvas.getContext("2d");
-    canvas.width = 840;
-    canvas.height = 480;
-    c.fillStyle = "white";
-    c.fillRect(0, 0, canvas.width, canvas.height);
-    const image = new Image();
-    image.src = "./zombiemap.png";
-    const playerimage = new Image();
-    playerimage.src = "./Playerdown.png";
-    image.onload = () => {
-        c.drawImage(image, -850, -200)
-        c.drawImage(playerimage, canvas.width/2, canvas.height/2)
-    }
-  
-
+    src = "index.js";
     async function myFunction() {
         var db = JSON.parse(localStorage.getItem("database"));
         var usernameText = document.getElementById("user");
