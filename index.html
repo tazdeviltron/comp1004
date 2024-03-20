@@ -30,10 +30,11 @@
         <input type="button" id="login" value="login" onclick="btnLogin()" />
     </div>
     <div id="logout1" style="display:none">
-        <input type="button" id="logout" value="logout" onclick="btnLogout()" />
+        <input type="button" id="logout" value="Logout" onclick="btnLogout()" />
+        <h3>Video game!</h3>
     </div>
     <center>
-        <h2> Scoreboard!</h2>
+        <div id="scoreboard" style="display:in-line"><h2> Scoreboard!</h2>
         <table>
             <tr>
                 <th>User</th>
@@ -61,7 +62,9 @@
             </tr>
         </table>
         <p id="demo"></p>
+        </div>
     </center>
+    <div id="game" style="display:none"><canvas> </canvas> </div>
     <div id="reg" style="display:none">
         <h2>Register for game!</h2>
         <form onsubmit="myFunction(); return false">
@@ -113,6 +116,18 @@
 <script>
     //script to load input data
     registration_data = {};
+    const canvas = document.querySelector("canvas");
+    const c = canvas.getContext("2d");
+    canvas.width = 1024;
+    canvas.height = 576;
+    c.fillStyle = "white";
+    c.fillRect(0, 0, canvas.width, canvas.height);
+    const image = new Image();
+    image.src = "comp1004/ zombiemap.png";
+    console.log(image);
+    image.onload = () => {
+        c.drawImage(image, 0, 0)
+    }
     async function myFunction() {
         var db = JSON.parse(localStorage.getItem("database"));
         var usernameText = document.getElementById("user");
@@ -173,7 +188,9 @@ var ee = document.getElementById("EditEmail");
 var ep = document.getElementById("Editpassword");
 var eu = document.getElementById("Edituser");
 var out = document.getElementById("logout1");
-var b = document.getElementById("dbutton");
+    var b = document.getElementById("dbutton");
+    var s = document.getElementById("scoreboard");
+    var g = document.getElementById("game");
 var usernameInput = document.getElementById("user1");
 var passwordInput1 = document.getElementById("pass1");
 var passwordInput = document.getElementById("pass1").value;
@@ -186,7 +203,9 @@ var hashedPasswordInput = await digestMessage(passwordInput);
       ep.style.display="inline-block";
       eu.style.display="inline-block";
       out.style.display = "inline-block";
-      b.style.display = "none";
+         b.style.display = "none";
+         s.style.display = "none";
+         g.style.display = "inline-block";
       usernameInput.value = "";
       passwordInput1.value = "";
       return;
@@ -246,11 +265,15 @@ async function btnLogout(){
     var ep = document.getElementById("Editpassword");
     var eu = document.getElementById("Edituser");
     var out = document.getElementById("logout1");
+    var s = document.getElementById("scoreboard");
+    var g = document.getElementById("game");
     b.style.display = "inline-block";
     ee.style.display = "none";
     ep.style.display = "none";
     eu.style.display = "none";
     out.style.display = "none";
+    s.style.display = "inline-block";
+    g.style.display = "none";
 }
 async function btnshowreg(){
 var x = document.getElementById("reg");
