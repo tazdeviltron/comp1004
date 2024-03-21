@@ -55,25 +55,55 @@ const keys = {
             playerImage.width / 4,
             playerImage.height / 4,
         )
-       // if () {
-
-       // }
+       if (keys.w.pressed&& lastKey == "w") {
+           background.position.y = background.position.y += 3
+        }
+       else if (keys.a.pressed&& lastKey == "a") {
+            background.position.x = background.position.x += 3
+        }
+       else if (keys.d.pressed&& lastKey =="d") {
+           background.position.x = background.position.x -= 3
+        }
+       else if (keys.s.pressed&& lastKey =="s") {
+           background.position.y = background.position.y -= 3
+       }
     }
 animate()
+let lastKey = "";
     window.addEventListener("keydown", (e) => {
         switch (e.key) {
             case "w":
                 keys.w.pressed = true;
+                lastKey = "w";
                 break;
             case "s":
                 keys.s.pressed = true;
+                lastKey = "s";
                 break;
             case "a":
                 keys.a.pressed = true;
+                lastKey = "a";
                 break;
             case "d":
                 keys.d.pressed = true;
+                lastKey = "d";
                 break;
         }
     })
 
+window.addEventListener("keyup", (e) => {
+    switch (e.key) {
+        case "w":
+            keys.w.pressed = false;
+            break;
+        case "s":
+            keys.s.pressed = false;
+            break;
+        case "a":
+            keys.a.pressed = false;
+            break;
+        case "d":
+            keys.d.pressed = false;
+            break;
+    }
+})
