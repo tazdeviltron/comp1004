@@ -10,21 +10,23 @@ image.src = "zombiemap.png";
 const playerImage = new Image();
 playerImage.src = "Spritesheet.png";
 class Sprint {
-    constructor({ position, velocity,image}) {
-        this.position = position
-        this.image = image
+    constructor({ position, velocity, image }) {
+        this.position = position;
+        this.velocity = velocity;
+        this.image = image;
     }
+
     draw() {
-        c.drawImage(this.image, -200, -100)
+        c.drawImage(this.image, this.position.x, this.position.y);
     }
 }
 const background = new Sprint({
     position: {
-        x = -200,
-        y= -100
+        x: -200,
+        y: -100
     },
-    image:image
-})
+    image: image
+});
 
 const keys = {
     w: {
@@ -57,7 +59,7 @@ const keys = {
 
        // }
     }
-    animate()
+animate()
     window.addEventListener("keydown", (e) => {
         switch (e.key) {
             case "w":

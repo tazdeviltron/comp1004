@@ -186,7 +186,7 @@ var usernameInput = document.getElementById("user1");
 var passwordInput1 = document.getElementById("pass1");
 var passwordInput = document.getElementById("pass1").value;
 var hashedPasswordInput = await digestMessage(passwordInput);
-
+    
  for(let i=0 ; i < db.length; i++){ 
      if (db[i].username == user1.value && db[i].password == hashedPasswordInput) {
       log.style.display="none";
@@ -198,7 +198,7 @@ var hashedPasswordInput = await digestMessage(passwordInput);
          s.style.display = "none";
          g.style.display = "inline-block";
       usernameInput.value = "";
-      passwordInput1.value = "";
+         passwordInput1.value = "";
       return;
     } 
    }
