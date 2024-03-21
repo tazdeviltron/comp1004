@@ -25,9 +25,10 @@ const background = new Sprint({
     },
     image:image
 })
+
 const keys = {
     w: {
-        pressed:false
+        pressed: false
     },
     a: {
         pressed: false
@@ -41,7 +42,7 @@ const keys = {
 }
     function animate() {
         window.requestAnimationFrame(animate)
-      background.draw()
+        background.draw();
         c.drawImage(playerImage,
             0,
             0,
@@ -60,12 +61,16 @@ const keys = {
     window.addEventListener("keydown", (e) => {
         switch (e.key) {
             case "w":
+                keys.w.pressed = true;
                 break;
             case "s":
+                keys.s.pressed = true;
                 break;
             case "a":
+                keys.a.pressed = true;
                 break;
             case "d":
+                keys.d.pressed = true;
                 break;
         }
     })
