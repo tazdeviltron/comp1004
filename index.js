@@ -3,8 +3,39 @@ const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 canvas.width = 840;
 canvas.height = 480;
-c.fillStyle = "white";
-c.fillRect(0, 0, canvas.width, canvas.height);
+const collisionsMap = [];
+const boundaries = [];
+
+for (let i = 0; i < collisions.length; i += 70) {
+    collisionsMap.push(collisions.slice(i, 70 + i));  
+}
+
+class Boundary {
+    static width = 24;
+    static height = 24;
+    constructor({position }) {
+        this.position = position;
+        this.width = 24;
+        this.height = 24;
+    }
+    draw() {
+        c.fillStyle = "red";
+        c.fillRect(this.position.x,this.position.y,this.width,this.height)
+    }
+}
+
+collisionsMap.forEach((row, i) => {
+    row.forEach((symbol, j) => {
+        if (symbol === 1025) {
+            boundaries.push(new Boundary({
+                position: {
+                    x: j * Boundary.width,
+                    y: i * Boundary.height
+                }
+            }))
+        }
+    })
+})
 const image = new Image();
 image.src = "zombiemap.png";
 const playerImage = new Image();
@@ -45,6 +76,9 @@ const keys = {
     function animate() {
         window.requestAnimationFrame(animate)
         background.draw();
+        boundaries.forEach(boundary => {
+            boundary.draw()
+        })
         c.drawImage(playerImage,
             0,
             0,
